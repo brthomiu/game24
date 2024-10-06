@@ -2,28 +2,28 @@ export interface Quest {
   name: string;
   requester: string;
   assignee: string;
-  type: string;
   goals: Goal[];
   completed: boolean;
 }
 
 export interface Goal {
   name: string;
+  type: "delivery" | "kill" | "hack";
   description: string;
   completed: boolean;
 }
 
-export interface DeliveryQuest extends Quest {
+export interface DeliveryGoal extends Goal {
   type: "delivery";
   item: string;
 }
 
-export interface KillQuest extends Quest {
+export interface KillGoal extends Goal {
   type: "kill";
   target: string;
 }
 
-export interface HackQuest extends Quest {
+export interface HackGoal extends Goal {
   type: "hack";
   target: string;
 }

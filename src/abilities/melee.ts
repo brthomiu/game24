@@ -17,7 +17,7 @@ export const abilityMeleeFocusAttack = (modifier: number): meleeAbility => {
     return {
       name: "Melee Attack",
       type: "melee",
-      description: "A basic melee strike.",
+      description: "A focused melee strike.",
       psiCost: 1,
       cooldown: 5,
       physicalDamage: 3 + modifier * 1.5,

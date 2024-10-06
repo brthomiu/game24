@@ -1,16 +1,16 @@
-import { Area, Tile, World } from "../types/world";
+import { Area, Tile, World, WorldProps } from "../types/world";
 import { isEdgeCell } from "./utilities";
 
-export const generateWorld = (
-  name: string,
-  description: string,
-  areaQuantity: number,
-  areaWidth: number
-): World => {
+export const generateWorld = ({
+  worldName,
+  description,
+  areaQuantity,
+  areaWidth,
+}: WorldProps): World => {
   return {
-    name,
+    worldName,
     description,
-    areas: generateAreaList(3, 10),
+    areas: [],
     characters: [],
     factions: [],
     items: [],
@@ -18,12 +18,17 @@ export const generateWorld = (
   };
 };
 
-const generateAreaList = (areaQuantity: number, areaWidth: number) => {
+export const generateAreaList = (
+  worldName: string,
+  areaQuantity: number,
+  areaWidth: number
+) => {
   const areaList = [];
   for (let i = 0; i < areaQuantity; i++) {
     let area = generateArea(
-      `Area${i.toString()}`,
-      `Area${i.toString()} placeholder description`,
+      `${worldName}-area-${i.toString()}`,
+      worldName,
+      `${worldName}-area-${i.toString()} placeholder description`,
       areaWidth
     );
     areaList.push(area);
@@ -32,14 +37,16 @@ const generateAreaList = (areaQuantity: number, areaWidth: number) => {
 };
 
 const generateArea = (
-  name: string,
+  areaName: string,
+  world: string,
   description: string,
   width: number
 ): Area => {
   return {
-    name,
+    areaName,
+    world,
     description,
-    grid: generateGrid(width),
+    grid: [],
     links: [],
   };
 };
@@ -50,18 +57,22 @@ const generateGrid = (width: number): Tile[] => {
   for (let i = 0; i < gridSize; i++) {
     let tile;
     if (isEdgeCell(i, gridSize)) {
+      // Set tiles for area borders
       tile = {
-        id: i,
+        tileId: i,
         name: "wall",
         description: "A wall that cannot be traversed.",
+        frequency: null,
         traversable: false,
         contents: null,
       };
     } else {
+      // Set tiles for the interior of the area
       tile = {
-        id: i,
+        tileId: i,
         name: "floor",
         description: "A floor that you can walk on.",
+        frequency: null,
         traversable: true,
         contents: null,
       };

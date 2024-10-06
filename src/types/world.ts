@@ -4,26 +4,40 @@ import { Container, Item } from "./items";
 import { Quest } from "./quest";
 
 export interface World {
-  name: string;
+  worldName: string;
   description: string;
-  areas: Area[];
-  characters: Character[];
+  areas: string[];
+  characters: string[];
   factions: Faction[];
   items: Item[];
   quests: Quest[];
 }
 
-export interface Area {
-  name: string;
+export interface WorldProps {
+  worldName: string;
   description: string;
-  grid: Tile[];
+  areaQuantity: number;
+  areaWidth: number;
+}
+
+export interface Area {
+  areaName: string;
+  world: string;
+  description: string;
+  grid: string[];
   links: string[];
 }
 
 export interface Tile {
-  id: number;
+  tileId: number;
   name: string;
   description: string;
+  frequency: 1 | 2 | 3 | 4 | 5 | null;
   traversable: boolean;
-  contents: Character | Container | Item | null;
+  contents: Character | Container | Item | Static | null;
+}
+
+export interface Static {
+  name: string;
+  description: string;
 }

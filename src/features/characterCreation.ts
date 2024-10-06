@@ -117,7 +117,7 @@ const createCharacter = (
   abilities: string[],
   inventory: string[],
   quests: string[],
-  dialogue: DialogueTree,
+  dialogue: DialogueTree
 ): Character => {
   return {
     name: "",

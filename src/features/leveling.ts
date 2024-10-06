@@ -21,7 +21,7 @@ export const levelUpCharacter = (character: Character): Character => {
     if (newLevel % 2 === 0) {
       newCharacter.stats.maxPsi += 1;
     }
-    newCharacter.stats.statPoints += levelUpStatPointGain[newLevel -1];
+    newCharacter.stats.statPoints += levelUpStatPointGain[newLevel - 1];
   } else {
     console.log(
       "ERROR: New level was outside of valid range! Character was not leveled up. /features/leveling.ts"
