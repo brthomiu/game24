@@ -1,6 +1,6 @@
 export interface Stats {
   // Attributes
-  strength: number;
+  strength: number; // increases physical offense
   stamina: number;
   mind: number;
   perception: number;
@@ -23,4 +23,5 @@ export interface Stats {
   evasion: number;
   critical: number;
 }
+
 

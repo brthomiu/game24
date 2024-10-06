@@ -35,3 +35,13 @@ export const isEdgeCell = (cell: number, gridSize: number): boolean => {
     return true;
   } else return false;
 };
+
+export const getUnusedPort = (port: number, activePorts: number[]): number => {
+  let currentPort = port;
+
+  while (activePorts.includes(currentPort)) {
+    currentPort += 1;
+  }
+
+  return currentPort;
+};

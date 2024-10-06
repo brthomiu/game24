@@ -1,7 +1,5 @@
 import { Character } from "./character";
-import { Faction } from "./faction";
 import { Container, Item } from "./items";
-import { Quest } from "./quest";
 
 export interface World {
   worldName: string;
