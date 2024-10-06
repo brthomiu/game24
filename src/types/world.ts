@@ -7,10 +7,6 @@ export interface World {
   worldName: string;
   description: string;
   areas: string[];
-  characters: string[];
-  factions: Faction[];
-  items: Item[];
-  quests: Quest[];
 }
 
 export interface WorldProps {
@@ -25,11 +21,10 @@ export interface Area {
   world: string;
   description: string;
   grid: string[];
-  links: string[];
 }
 
 export interface Tile {
-  tileId: number;
+  tileId: string;
   name: string;
   description: string;
   frequency: 1 | 2 | 3 | 4 | 5 | null;

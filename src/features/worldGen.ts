@@ -11,10 +11,6 @@ export const generateWorld = ({
     worldName,
     description,
     areas: [],
-    characters: [],
-    factions: [],
-    items: [],
-    quests: [],
   };
 };
 
@@ -47,11 +43,15 @@ const generateArea = (
     world,
     description,
     grid: [],
-    links: [],
   };
 };
 
-const generateGrid = (width: number): Tile[] => {
+export const generateGrid = (
+  worldName: string,
+  areaName: string,
+  areaNumber: number,
+  width: number
+): Tile[] => {
   const gridSize = width * width;
   const grid = [];
   for (let i = 0; i < gridSize; i++) {
@@ -59,7 +59,7 @@ const generateGrid = (width: number): Tile[] => {
     if (isEdgeCell(i, gridSize)) {
       // Set tiles for area borders
       tile = {
-        tileId: i,
+        tileId: `WORLD_${worldName}-AREA_${areaName}${areaNumber}-TILE_${i}-WALL`,
         name: "wall",
         description: "A wall that cannot be traversed.",
         frequency: null,
@@ -69,7 +69,7 @@ const generateGrid = (width: number): Tile[] => {
     } else {
       // Set tiles for the interior of the area
       tile = {
-        tileId: i,
+        tileId: `WORLD_${worldName}-AREA_${areaName}${areaNumber}-TILE_${i}-FLOOR`,
         name: "floor",
         description: "A floor that you can walk on.",
         frequency: null,

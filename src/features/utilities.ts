@@ -11,22 +11,27 @@ export const isAbilityCrit = (modifier: number): boolean => {
   } else return false;
 };
 
-export const isEdgeCell = (cell: number, n: number): boolean => {
+export const isEdgeCell = (cell: number, gridSize: number): boolean => {
+  const gridWidth = Math.sqrt(gridSize);
+
   // Top edge
-  if (cell >= 0 && cell < n) {
+  if (cell >= 0 && cell <= gridWidth) {
+    console.log("------TOP EDGE");
     return true;
   }
   // Left edge
-  if (cell % n === 0) {
+  else if (cell % gridWidth === 0) {
+    console.log("------LEFT EDGE");
     return true;
   }
   // Bottom edge
-  if (cell >= n * (n - 1) && cell < n * n) {
+  else if (cell >= gridSize - gridWidth && cell < gridSize) {
+    console.log("------BOTTOM EDGE");
     return true;
   }
   // Right edge
-  if ((cell + 1) % n === 0) {
+  else if ((cell + 1) % gridWidth === 0) {
+    console.log("------TOP EDGE");
     return true;
-  }
-  return false;
+  } else return false;
 };

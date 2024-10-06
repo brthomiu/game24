@@ -29,11 +29,7 @@ const createWorldsTable = () => {
     (
     worldName TEXT PRIMARY KEY,
     description TEXT,
-    areas TEXT,
-    characters TEXT,
-    factions TEXT,
-    items TEXT,
-    quests TEXT
+    areas TEXT
     )`);
 };
 
@@ -43,8 +39,7 @@ const createAreasTable = () => {
     areaName TEXT PRIMARY KEY,
     world TEXT,
     description TEXT,
-    grid TEXT,
-    links TEXT
+    grid TEXT
     )`);
 };
 
