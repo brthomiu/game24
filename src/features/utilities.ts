@@ -45,3 +45,19 @@ export const getUnusedPort = (port: number, activePorts: number[]): number => {
 
   return currentPort;
 };
+
+export const logMessage = (
+  logName: string,
+  errorLocation: string,
+  details: string | null
+): void => {
+  const logLine = "----------------------------------------------";
+  console.log(logLine);
+  console.log(logName);
+  console.log(errorLocation);
+  if (details) {
+    console.log(details);
+  }
+  console.log(logLine);
+  console.log("");
+};
