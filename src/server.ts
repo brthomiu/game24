@@ -1,10 +1,12 @@
 // import { ClientConnection } from "./types/network";
 import { Server } from "bun";
 import { logMessage } from "./features/utilities";
-import { Player } from "./types/user";
+import { Player } from "./types/player";
 
 // Logging info
 const logName = "SERVER MESSAGE - src/server.ts";
+
+// Login Function
 
 // Create HTTP server & routes
 const server = Bun.serve({
@@ -18,10 +20,6 @@ const server = Bun.serve({
     // HTTP Routes
     const url = new URL(req.url);
     if (url.pathname === "/api/login") {
-
-    };
-
-    if (url.pathname === "/api/register") {
 
     };
 
@@ -43,52 +41,6 @@ const server = Bun.serve({
 // const activePorts: number[] = [];
 // // First port to use (iterates up from there)
 // const startingPort = 7333;
-
-// // REST API for establishing connection to server
-// app.get("/", (c) => {
-//   const client = getConnInfo(c).remote.address;
-//   if (client) {
-//     let connection: ClientConnection = {
-//       port: getUnusedPort(startingPort, activePorts),
-//       userId: client,
-//     };
-//     pendingConnections.push(connection);
-//     logMessage(
-//       logName,
-//       `Pending Connections:`,
-//       JSON.stringify(pendingConnections)
-//     );
-//     activePorts.push(connection.port);
-//     logMessage(
-//       logName,
-//       `${connection.userId} connected to port ${connection.port}`,
-//       null
-//     );
-
-//     return c.html(`
-//     <body>
-//       <h1>Connected!</h1>
-//       <p>Welcome, ${client}</p>
-//     </body>
-//   `);
-//   } else {
-//     logMessage(logName, "Could not establish connection to client.", null);
-
-//     return c.html(`
-//     <body>
-//       <h1>Server Error</h1>
-//       <p>Could not establish connection to client.</p>
-//     </body>
-//   `);
-//   }
-// });
-
-// export default {
-//   port: 3000,
-//   fetch: app.fetch,
-// };
-
-// Server
 
 // // Ping - Periodically checks connections with clients, upgrades pending clients, removes inactive clients
 // setInterval(() => {
