@@ -1,4 +1,4 @@
 export interface ClientConnection {
   port: number;
-  userId: string;
+  playerId: string;
 }

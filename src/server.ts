@@ -1,12 +1,18 @@
 // import { ClientConnection } from "./types/network";
 import { Server } from "bun";
 import { logMessage } from "./features/utilities";
-import { Player } from "./types/player";
+import { ClientConnection } from "./types/server";
+import { login } from "./features/login";
 
 // Logging info
 const logName = "SERVER MESSAGE - src/server.ts";
 
-// Login Function
+// List of client connections
+const pendingConnections: ClientConnection[] = [];
+const connectedClients: ClientConnection[] = [];
+
+// First port to use (iterates up from there)
+let startingPort = 7333;
 
 // Create HTTP server & routes
 const server = Bun.serve({
@@ -20,9 +26,8 @@ const server = Bun.serve({
     // HTTP Routes
     const url = new URL(req.url);
     if (url.pathname === "/api/login") {
-
-    };
-
+      login(req)
+    }
   },
   // Websocket handlers
   websocket: {
@@ -32,15 +37,6 @@ const server = Bun.serve({
     drain(ws) {}, // the socket is ready to receive more data
   },
 });
-
-// // List of client connections
-// const pendingConnections: ClientConnection[] = [];
-// const connectedClients: ClientConnection[] = [];
-
-// // List of ports currently in use
-// const activePorts: number[] = [];
-// // First port to use (iterates up from there)
-// const startingPort = 7333;
 
 // // Ping - Periodically checks connections with clients, upgrades pending clients, removes inactive clients
 // setInterval(() => {
